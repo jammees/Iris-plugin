@@ -1,0 +1,22 @@
+{
+  "name": "Iris",
+  "tree": {
+    "$className": "DataModel",
+
+    "ReplicatedStorage": {
+      "Iris": {
+        "$path":"src"
+      }
+    },
+
+    "ServerStorage": {
+      "Iris-plugin": {
+        "$path":"example_plugin",
+
+        "Iris": {
+          "$path":"src"
+        }
+      }
+    }
+  }
+}
