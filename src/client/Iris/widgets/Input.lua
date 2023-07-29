@@ -1,4 +1,3 @@
-local UserInputService = game:GetService("UserInputService")
 return function(Iris, widgets)
 	local numberChanged = {
 		["Init"] = function() end,
@@ -453,10 +452,10 @@ return function(Iris, widgets)
 			local Max = ActiveDragNum.arguments.Max or 1e5
 
 			local Increment = (ActiveDragNum.arguments.Increment or 1)
-			Increment *= (widgets.UserInputService:IsKeyDown(Enum.KeyCode.LeftShift) or widgets.UserInputService:IsKeyDown(
+			Increment *= (widgets.PluginUserInput.IsKeyDown(Enum.KeyCode.LeftShift) or widgets.PluginUserInput.IsKeyDown(
 				Enum.KeyCode.RightShift
 			)) and 10 or 1
-			Increment *= (widgets.UserInputService:IsKeyDown(Enum.KeyCode.LeftAlt) or widgets.UserInputService:IsKeyDown(
+			Increment *= (widgets.PluginUserInput.IsKeyDown(Enum.KeyCode.LeftAlt) or widgets.PluginUserInput.IsKeyDown(
 				Enum.KeyCode.RightAlt
 			)) and 0.1 or 1
 
@@ -467,8 +466,8 @@ return function(Iris, widgets)
 		local function InputFieldContainerOnClick(thisWidget, x, y)
 			local currentTime = widgets.getTime()
 			local isTimeValid = currentTime - thisWidget.lastClickedTime < Iris._config.MouseDoubleClickTime
-			local isCtrlHeld = widgets.UserInputService:IsKeyDown(Enum.KeyCode.LeftControl)
-				or widgets.UserInputService:IsKeyDown(Enum.KeyCode.RightControl)
+			local isCtrlHeld = widgets.PluginUserInput.IsKeyDown(Enum.KeyCode.LeftControl)
+				or widgets.PluginUserInput.IsKeyDown(Enum.KeyCode.RightControl)
 			if
 				(
 					isTimeValid
@@ -661,8 +660,8 @@ return function(Iris, widgets)
 		widgets.PluginUserInput.InputChanged:Connect(updateActiveSlider)
 
 		local function InputFieldContainerOnClick(thisWidget)
-			local isCtrlHeld = widgets.UserInputService:IsKeyDown(Enum.KeyCode.LeftControl)
-				or widgets.UserInputService:IsKeyDown(Enum.KeyCode.RightControl)
+			local isCtrlHeld = widgets.PluginUserInput.IsKeyDown(Enum.KeyCode.LeftControl)
+				or widgets.PluginUserInput.IsKeyDown(Enum.KeyCode.RightControl)
 			if isCtrlHeld then
 				thisWidget.state.editingText:set(true)
 			else
@@ -938,8 +937,8 @@ return function(Iris, widgets)
 			SubButton.Parent = InputNum
 
 			SubButton.MouseButton1Click:Connect(function()
-				local isCtrlHeld = UserInputService:IsKeyDown(Enum.KeyCode.LeftControl)
-					or UserInputService:IsKeyDown(Enum.KeyCode.RightControl)
+				local isCtrlHeld = widgets.PluginUserInput.IsKeyDown(Enum.KeyCode.LeftControl)
+					or widgets.PluginUserInput.IsKeyDown(Enum.KeyCode.RightControl)
 				local changeValue = (thisWidget.arguments.Increment or 1) * (isCtrlHeld and 100 or 1)
 				local newValue = thisWidget.state.number.value - changeValue
 				newValue =
@@ -958,8 +957,8 @@ return function(Iris, widgets)
 			AddButton.Parent = InputNum
 
 			AddButton.MouseButton1Click:Connect(function()
-				local isCtrlHeld = UserInputService:IsKeyDown(Enum.KeyCode.LeftControl)
-					or UserInputService:IsKeyDown(Enum.KeyCode.RightControl)
+				local isCtrlHeld = widgets.PluginUserInput.IsKeyDown(Enum.KeyCode.LeftControl)
+					or widgets.PluginUserInput.IsKeyDown(Enum.KeyCode.RightControl)
 				local changeValue = (thisWidget.arguments.Increment or 1) * (isCtrlHeld and 100 or 1)
 				local newValue = thisWidget.state.number.value + changeValue
 				newValue =
