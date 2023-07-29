@@ -245,8 +245,8 @@ return function(Iris, widgets)
 		if
 			input.KeyCode == Enum.KeyCode.Tab
 			and (
-				widgets.UserInputService:IsKeyDown(Enum.KeyCode.LeftControl)
-				or widgets.UserInputService:IsKeyDown(Enum.KeyCode.RightControl)
+				widgets.PluginUserInput.IsKeyDown(Enum.KeyCode.LeftControl)
+				or widgets.PluginUserInput.IsKeyDown(Enum.KeyCode.RightControl)
 			)
 		then
 			quickSwapWindows()
