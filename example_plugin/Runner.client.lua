@@ -15,25 +15,24 @@ PluginFramework:OnInit(function()
 			if not isInitiated then
 				isInitiated = true
 				Iris = require(script.Parent.Iris).Init(widget.Container)
+				Iris:Connect(Iris.ShowDemoWindow)
 			end
 
-			Iris:Connect(function()
-				Iris.ShowDemoWindow()
-			end)
+			Iris.Disabled = false
 		else
-			table.clear(Iris._connectedFunctions)
+			Iris.Disabled = true
 		end
 	end)
 
 	widget:GetPropertyChangedSignal("Enabled"):Connect(function()
 		if not widget.Enabled then
-			table.clear(Iris._connectedFunctions)
+			Iris.Disabled = true
 		end
 	end)
 end)
 
 PluginFramework:OnDeInit(function()
-	table.clear(Iris._connectedFunctions)
+	Iris.Disabled = true
 end)
 
 plugin.Unloading:Connect(function()
