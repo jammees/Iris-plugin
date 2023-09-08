@@ -6,7 +6,21 @@
     "StarterPlayer": {
       "StarterPlayerScripts": {
         "Client": {
-          "$path": "src/client"
+          "$path": "example/client",
+
+          "Iris": {
+            "$path": "src/client/Iris"
+          }
+        }
+      }
+    },
+
+    "ReplicatedStorage": {
+      "Iris-plugin": {
+        "$path": "example/plugin",
+
+        "Iris": {
+          "$path": "src/client/Iris"
         }
       }
     },
