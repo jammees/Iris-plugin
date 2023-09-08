@@ -3,14 +3,12 @@ https://www.roblox.com/games/11145814918/Iris-Demonstration
 
 # Note
 
-This is a modification to Iris, v:2.0.4
+This is a modification to Iris, v:2.1.0
 
 Modifications include:
 
-- Removed unused locals reported by `Selene`
-- Ran through with `Stylua`
 - Made it compatible with `DockWidgets`
-- Restructure
+- Stopped Iris from using folders when `UseScreenGuis` was turned off
 
 # Iris
 Iris is an Immediate mode GUI Library for Roblox, Based on [Dear ImGui](https://github.com/ocornut/imgui). It solves the same problems as Dear ImGui. It is fast, portable, and self-contained (no external dependencies).
