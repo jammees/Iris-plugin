@@ -67,7 +67,6 @@ function Iris.Init(parentInstance: BasePlayerGui?, eventConnection: (RBXScriptSi
     -- seamlessly.
     if Internal.parentInstance:IsA("DockWidgetPluginGui") then
         Iris.UpdateGlobalConfig({ UseScreenGUIs = false })
-        warn(require(script.InputService))
         require(script.InputService).Init(Internal)
     end
 
