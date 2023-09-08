@@ -70,6 +70,12 @@ function Iris.Init(parentInstance: BasePlayerGui?, eventConnection: (RBXScriptSi
         warn(require(script.InputService))
         require(script.InputService).Init(Internal)
     end
+
+    -- Initiate API and widgets after we decided whether
+    -- we're in a plugin environment or not
+    require(script.widgets)(Internal)
+    require(script.API)(Iris)
+
     assert(Internal._started == false, "Iris.Init can only be called once.")
     Internal._started = true
 
@@ -423,8 +429,5 @@ end
     ```
 ]=]
 Iris.ShowDemoWindow = require(script.demoWindow)(Iris)
-
-require(script.widgets)(Internal)
-require(script.API)(Iris)
 
 return Iris
