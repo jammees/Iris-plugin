@@ -61,6 +61,15 @@ function Iris.Init(parentInstance: BasePlayerGui?, eventConnection: (RBXScriptSi
         eventConnection = game:GetService("RunService").Heartbeat
     end
     Internal.parentInstance = parentInstance :: BasePlayerGui
+
+    -- Check if Iris has been initiated in a Plugin widget
+    -- if so, we can overwrite couple of settings to make it work
+    -- seamlessly.
+    if Internal.parentInstance:IsA("DockWidgetPluginGui") then
+        Iris.UpdateGlobalConfig({ UseScreenGUIs = false })
+        warn(require(script.InputService))
+        require(script.InputService).Init(Internal)
+    end
     assert(Internal._started == false, "Iris.Init can only be called once.")
     Internal._started = true
 
