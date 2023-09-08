@@ -354,7 +354,11 @@ return function(Iris: Types.Internal, widgets: Types.WidgetUtility)
                 Window.DisplayOrder = Iris._config.DisplayOrderOffset
                 Window.IgnoreGuiInset = Iris._config.IgnoreGuiInset
             else
-                Window = Instance.new("Folder")
+                -- Window = Instance.new("Folder")
+                Window = Instance.new("Frame")
+                Window.ZIndex = Iris._config.DisplayOrderOffset
+                Window.BackgroundTransparency = 1
+                Window.Size = UDim2.fromScale(1, 1)
             end
             Window.Name = "Iris_Window"
 
