@@ -9,7 +9,15 @@ return function(Iris: Types.Internal, widgets: Types.WidgetUtility)
         Args = {},
         Events = {},
         Generate = function(_thisWidget: Types.Widget)
-            local Root: Folder = Instance.new("Folder")
+            local Root: Folder
+            if Iris._config.UseScreenGUIs then
+                Root = Instance.new("Folder")
+            else
+                Root = Instance.new("Frame")
+                -- Root.ZIndex = Iris._config.DisplayOrderOffset
+                Root.BackgroundTransparency = 1
+                Root.Size = UDim2.fromScale(1, 1)
+            end
             Root.Name = "Iris_Root"
 
             local PseudoWindowScreenGui
@@ -19,7 +27,14 @@ return function(Iris: Types.Internal, widgets: Types.WidgetUtility)
                 PseudoWindowScreenGui.DisplayOrder = Iris._config.DisplayOrderOffset
                 PseudoWindowScreenGui.IgnoreGuiInset = Iris._config.IgnoreGuiInset
             else
-                PseudoWindowScreenGui = Instance.new("Folder")
+                -- PseudoWindowScreenGui = Instance.new("Folder")
+                PseudoWindowScreenGui = Instance.new("Frame")
+                PseudoWindowScreenGui.ZIndex = Iris._config.DisplayOrderOffset
+                PseudoWindowScreenGui.BackgroundTransparency = 1
+                PseudoWindowScreenGui.Size = UDim2.fromScale(1, 1)
+                -- PseudoWindowScreenGui.ResetOnSpawn = false
+                -- PseudoWindowScreenGui.DisplayOrder = Iris._config.DisplayOrderOffset
+                -- PseudoWindowScreenGui.IgnoreGuiInset = Iris._config.IgnoreGuiInset
             end
             PseudoWindowScreenGui.Name = "PseudoWindowScreenGui"
             PseudoWindowScreenGui.Parent = Root
@@ -51,7 +66,31 @@ return function(Iris: Types.Internal, widgets: Types.WidgetUtility)
 
                 MenuBarContainer.Parent = PopupScreenGui
             else
-                PopupScreenGui = Instance.new("Folder")
+                -- PopupScreenGui = Instance.new("Folder")
+                PopupScreenGui = Instance.new("Frame")
+                PopupScreenGui.ZIndex = Iris._config.DisplayOrderOffset + 1024
+                PopupScreenGui.BackgroundTransparency = 1
+                PopupScreenGui.Size = UDim2.fromScale(1, 1)
+
+                local TooltipContainer: Frame = Instance.new("Frame")
+                TooltipContainer.Name = "TooltipContainer"
+                TooltipContainer.AutomaticSize = Enum.AutomaticSize.XY
+                TooltipContainer.Size = UDim2.fromOffset(0, 0)
+                TooltipContainer.BackgroundTransparency = 1
+                TooltipContainer.BorderSizePixel = 0
+
+                widgets.UIListLayout(TooltipContainer, Enum.FillDirection.Vertical, UDim.new(0, Iris._config.PopupBorderSize))
+
+                TooltipContainer.Parent = PopupScreenGui
+
+                local MenuBarContainer: Frame = Instance.new("Frame")
+                MenuBarContainer.Name = "MenuBarContainer"
+                MenuBarContainer.AutomaticSize = Enum.AutomaticSize.Y
+                MenuBarContainer.Size = UDim2.fromScale(1, 0)
+                MenuBarContainer.BackgroundTransparency = 1
+                MenuBarContainer.BorderSizePixel = 0
+
+                MenuBarContainer.Parent = PopupScreenGui
             end
             PopupScreenGui.Name = "PopupScreenGui"
             PopupScreenGui.Parent = Root
