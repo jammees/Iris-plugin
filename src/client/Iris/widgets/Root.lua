@@ -13,8 +13,8 @@ return function(Iris: Types.Internal, widgets: Types.WidgetUtility)
             if Iris._config.UseScreenGUIs then
                 Root = Instance.new("Folder")
             else
+                -- Root = Instance.new("Folder")
                 Root = Instance.new("Frame")
-                -- Root.ZIndex = Iris._config.DisplayOrderOffset
                 Root.BackgroundTransparency = 1
                 Root.Size = UDim2.fromScale(1, 1)
             end
@@ -32,9 +32,6 @@ return function(Iris: Types.Internal, widgets: Types.WidgetUtility)
                 PseudoWindowScreenGui.ZIndex = Iris._config.DisplayOrderOffset
                 PseudoWindowScreenGui.BackgroundTransparency = 1
                 PseudoWindowScreenGui.Size = UDim2.fromScale(1, 1)
-                -- PseudoWindowScreenGui.ResetOnSpawn = false
-                -- PseudoWindowScreenGui.DisplayOrder = Iris._config.DisplayOrderOffset
-                -- PseudoWindowScreenGui.IgnoreGuiInset = Iris._config.IgnoreGuiInset
             end
             PseudoWindowScreenGui.Name = "PseudoWindowScreenGui"
             PseudoWindowScreenGui.Parent = Root
