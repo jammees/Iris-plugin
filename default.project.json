@@ -6,7 +6,11 @@
     "StarterPlayer": {
       "StarterPlayerScripts": {
         "Client": {
-          "$path": "src/client"
+          "$path": "example/client",
+
+          "Iris": {
+            "$path": "src/client/Iris"
+          }
         }
       }
     },
