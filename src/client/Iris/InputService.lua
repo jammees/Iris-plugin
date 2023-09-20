@@ -13,7 +13,7 @@ local pressedKeys = {} :: { [number]: Enum.KeyCode }
 local InputService = {}
 InputService.X = 0
 InputService.Y = 0
-InputService.Initiated = false
+-- InputService.Initiated = false
 
 InputService.InputBegan = UserInputService.InputBegan
 InputService.InputEnded = UserInputService.InputEnded
@@ -21,11 +21,11 @@ InputService.InputChanged = UserInputService.InputChanged
 InputService.TouchTapInWorld = UserInputService.TouchTapInWorld
 
 function InputService.Init(internal: Types.Internal)
-    if InputService.Initiated then
-        return
-    end
+    -- if InputService.Initiated then
+    -- return
+    -- end
 
-    InputService.Initiated = true
+    -- InputService.Initiated = true
 
     local root = Instance.new("Frame")
     root.BackgroundTransparency = 1
